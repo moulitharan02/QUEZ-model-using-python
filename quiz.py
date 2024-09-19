@@ -1,9 +1,8 @@
-# JSON is a syntax for storing and exchanging data.
-# Python has a built-in package called json, which can be used to work with JSON data.
+
 import json
-# Python Random module is an in-built module of Python which is used to generate random numbers. 
+ 
 import random
-# No echo input ( passwords aren't shown )
+
 import getpass
 
 user = []
@@ -54,16 +53,16 @@ def quizQuestions():
 def createAccount():
 	print("\n==========CREATE ACCOUNT==========")
 	username = input("Enter your USERNAME: ")
-	password = getpass.getpass(prompt= 'Enter your PASSWORD: ') # The getpass() function is used to prompt to users using the string prompt and reads the input from the user as Password.
-	with open('assets/user_accounts.json', 'r+') as user_accounts: #The r+ mode is used to open a file for both reading and writing
+	password = getpass.getpass(prompt= 'Enter your PASSWORD: ') 
+	with open('assets/user_accounts.json', 'r+') as user_accounts: 
 		users = json.load(user_accounts)
 		if username in users.keys():
 			print("An account of this Username already exists.\nPlease enter the login panel.")
 		else:
 			users[username] = [password, "PLAYER"]
-			user_accounts.seek(0) # seek() function is used to change the position of the File Handle to a given specific position. 0 = beginnning
+			user_accounts.seek(0)  specific position. 0 = beginnning
 			json.dump(users, user_accounts) #dumps convert python objects of the all types such int,float,list,tuple,dictionary into JSON strings:
-			user_accounts.truncate() # Python file method truncate() truncates the file's size.
+			user_accounts.truncate() 
 			print("Account created successfully!")
 
 def loginAccount():
